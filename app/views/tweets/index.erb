@@ -1,0 +1,11 @@
+<h1>Welcome, <%= current_user.username %></h1>
+<a href="tweets/new"><button>Create a Tweet</button></a>
+<% @tweets.each do |tweet| %>
+    <h4><%= tweet.user.username %> tweeted:</h4>
+    <% if current_user.id == tweet.user_id %>
+        <p><a href="/tweets/<%= tweet.id %>/edit"><%= tweet.content %></a></p>
+    <% else %>
+        <p><%= tweet.content %></p>
+    <% end %>
+    <br>
+<% end %>
